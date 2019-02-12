@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Home from '@/views/Home'
+import HomePage from '@/views/HomePage'
+import MoreData from '@/views/MoreData'
+import CaseList from '@/views/CaseList'
+import Video from '@/views/Video'
 
 Vue.use(Router)
 
@@ -8,8 +12,34 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home,
+      children:[
+        // 主页
+        {
+          path:'',
+          name:'HomePage',
+          component:HomePage
+        },
+        // 案列
+        {
+          path:'/CaseList',
+          name:'CaseList',
+          component:CaseList
+        },
+        // 视频
+        {
+          path:'/Video',
+          name:'Video',
+          component:Video
+        }
+      ]
+    },
+    // 更多资料页面
+    {
+      path:'/MoreData',
+      name:'MoreData',
+      component:MoreData
     }
   ]
 })

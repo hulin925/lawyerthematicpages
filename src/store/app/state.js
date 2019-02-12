@@ -1,0 +1,19 @@
+export default{
+  navList:[
+    {
+      name:'主页',
+      routerName:'HomePage',
+      active:true
+    },
+    {
+      name:'案列',
+      routerName:'CaseList',
+      active:false
+    },
+    {
+      name:'视频',
+      routerName:'Video',
+      active:false
+    }
+  ]
+}
