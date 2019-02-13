@@ -1,11 +1,11 @@
 <template>
   <div>
     <!--头部个人信息板块-->
-    <header>
+    <header ref="headerHeight">
       <div class="information clearfix">
         <div class="informationLeft">
           <h2>罗文金 <span>从业年限8年</span></h2>
-          <p>四川省泸州市 | 正当律师事务所</p>
+          <p>{{province+LocationCity}} | 正当律师事务所</p>
         </div>
         <div class="informationRight">
           <span></span>
@@ -23,7 +23,7 @@
     </header>
 
     <!--导航区域-->
-    <nav>
+    <nav ref="navs" :class="searchBarFixed == true ? 'position' :''">
       <div
         v-for="item,index in navList"
         @click.stop="changeNav(item,index)"
@@ -41,6 +41,7 @@
 
 <script>
   import {mapGetters} from 'vuex'//导出
+  import BMap from 'BMap'
   export default{
     name: 'Home',
     computed: mapGetters([
@@ -48,6 +49,9 @@
     ]),
     data(){
       return{
+        searchBarFixed:false,
+        LocationCity:"正在定位",    //给渲染层定义一个初始值
+        province:""
       }
     },
     created() {
@@ -56,15 +60,46 @@
           this.$store.commit('setDecorate', i);
         }
       }
+
     },
+    mounted () {
+      window.addEventListener('scroll', this.handleScroll);
+      this.city()    //触发获取城市方法
+  },
     methods:{
       changeNav(item,index){
         this.$store.commit('setDecorate', index);
         if (item.routerName) {
           this.$router.push({name: item.routerName})
         }
+      },
+      handleScroll () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        // console.log(scrollTop)
+        var offsetTop = this.$refs.headerHeight.offsetHeight;
+        if (scrollTop > offsetTop) {
+          this.searchBarFixed = true
+        } else {
+          this.searchBarFixed = false
+        }
+      },
+      city(){    //定义获取城市方法
+        const geolocation = new BMap.Geolocation();
+        console.log(geolocation)
+        var _this = this
+        geolocation.getCurrentPosition(function getinfo(position){
+          let city = position.address.city;             //获取城市信息
+          let province = position.address.province;    //获取省份信息
+          _this.LocationCity = city;
+          _this.province=province;
+        }, function(e) {
+          _this.LocationCity = "定位失败"
+        }, {provider: 'baidu'});
       }
-    }
+    },
+    destroyed () {//当离开页面
+      window.removeEventListener('scroll', this.handleScroll)
+    },
   }
 </script>
 
@@ -125,7 +160,7 @@
   .position{
     position:fixed;
     top:0;
-    left:0;
+    z-index:999;
   }
   nav{
     width:100%;
@@ -137,8 +172,9 @@
     color:#7d7878;
   }
   nav div{
-    line-height:80/@r;
+    line-height:90/@r;
     position:relative;
+    font-size:32/@r;
   }
   nav div.active:before{
     position:absolute;

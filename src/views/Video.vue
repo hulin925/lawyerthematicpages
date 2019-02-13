@@ -1,7 +1,10 @@
 <template>
   <div>
-
-    <a href="http://www.64365.com/video/wqmoe/">video</a>
+    <div>
+      <video src="http://www.w3school.com.cn/i/movie.ogg" controls="controls">
+        your browser does not support the video tag
+      </video>
+    </div>
   </div>
 </template>
 

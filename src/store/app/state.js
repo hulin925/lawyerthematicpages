@@ -1,3 +1,4 @@
+
 export default{
   navList:[
     {
@@ -15,5 +16,7 @@ export default{
       routerName:'Video',
       active:false
     }
-  ]
+  ],
+  LocationCity:"正在定位",    //给渲染层定义一个初始值
+  province:""
 }
