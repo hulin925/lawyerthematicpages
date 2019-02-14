@@ -5,6 +5,7 @@ import HomePage from '@/views/HomePage'
 import MoreData from '@/views/MoreData'
 import CaseList from '@/views/CaseList'
 import Video from '@/views/Video'
+import Comment from '@/views/Comment'
 
 Vue.use(Router)
 
@@ -40,6 +41,12 @@ export default new Router({
       path:'/MoreData',
       name:'MoreData',
       component:MoreData
+    },
+    // 评论页面
+    {
+      path:'/Comment',
+      name:'Comment',
+      component:Comment
     }
   ]
 })

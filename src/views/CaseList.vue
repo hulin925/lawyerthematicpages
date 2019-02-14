@@ -3,7 +3,9 @@
     <div class="contents">
       <div class="padding">
         <div class="title clearfix">
-          <div class="titleLeft"></div>
+          <div class="titleLeft">
+            <img src="../assets/images/lvshi.jpg" alt="">
+          </div>
           <div class="titleRight">
             <p>罗文金</p>
             <p>02-12</p>
@@ -42,15 +44,15 @@
         </div>
       </div>
       <div class="comment">
-        <div>
+        <div @click.stop="download">
           <img src="../assets/images/zhuanfa.png" alt="">
           <span>37</span>
         </div>
-        <div>
+        <div @click.stop="download">
           <img src="../assets/images/pinglun.png" alt="">
           <span>1254</span>
         </div>
-        <div>
+        <div @click.stop="download">
           <img src="../assets/images/dianzan.png" alt="">
           <span>45</span>
         </div>
@@ -86,10 +88,14 @@
     float:left;
     width:80/@r;
     height:80/@r;
-    background-color:#b09dfe;
+    overflow: hidden;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+  }
+  .titleLeft img{
+    width:100%;
+    height:100%;
   }
   .titleRight{
     float:left;

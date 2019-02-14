@@ -8,7 +8,7 @@
           <p>{{province+LocationCity}} | 正当律师事务所</p>
         </div>
         <div class="informationRight">
-          <span></span>
+          <span><img src="../assets/images/lvshi.jpg" alt=""></span>
         </div>
       </div>
       <div class="special clearfix">
@@ -85,13 +85,18 @@
       },
       city(){    //定义获取城市方法
         const geolocation = new BMap.Geolocation();
-        console.log(geolocation)
         var _this = this
         geolocation.getCurrentPosition(function getinfo(position){
           let city = position.address.city;             //获取城市信息
           let province = position.address.province;    //获取省份信息
           _this.LocationCity = city;
           _this.province=province;
+          let obj={
+            province,
+            city
+          }
+          let str=JSON.stringify(obj);
+          sessionStorage.obj=str;
         }, function(e) {
           _this.LocationCity = "定位失败"
         }, {provider: 'baidu'});
@@ -137,8 +142,12 @@
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background-color:#33fde3;
     margin-top:20/@r;
+    overflow: hidden;
+  }
+  .informationRight img{
+    width:100%;
+    height:100%;
   }
   .special{
     padding-bottom:70/@r;

@@ -6,9 +6,14 @@ import router from './router'
 import store from './store'
 
 import '@/assets/css/reset.css' //global reset.css
+import '@/assets/css/common.less'
 
 Vue.config.productionTip = false
 
+//全局方法
+Vue.prototype.download = function (){
+  window.location.href="https://web.3fgj.com/sharePage/download1.html";
+}
 
 /* eslint-disable no-new */
 new Vue({

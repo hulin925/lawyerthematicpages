@@ -1,5 +1,9 @@
 <template>
     <div>
+      <header class="headerPosition">
+        <span @click.stop="$router.go(-1)"><img src="../assets/images/xiangzuo.png" alt=""></span>
+        <i>罗文金</i>
+      </header>
       <div class="content">
         <div class="numberInfo">
           <p class="clearfix">
@@ -45,6 +49,7 @@
 <style scoped type="text/less" lang="less">
   @r:30rem;
 
+
   .background{
     position:absolute;
     left:0;
@@ -54,6 +59,7 @@
     background-color: #e7e7e7;
   }
   .content{
+    top:80/@r;
     position:relative;
     z-index:20;
     background-color:#fff;
@@ -65,13 +71,11 @@
     line-height:40/@r;
   }
   .content span{
-    color:#939393;
-  }
-  span{
     float:left;
     width:18%;
+    color:#939393;
   }
-  i{
+  .content i{
     float:left;
     width:82%;
   }
