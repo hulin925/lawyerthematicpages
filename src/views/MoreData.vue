@@ -32,7 +32,7 @@
           </p>
           <p class="location clearfix">
             <span>所在地</span>
-            <i>四川 泸州</i>
+            <i>{{province}} {{city}}</i>
           </p>
         </div>
       </div>
@@ -42,7 +42,19 @@
 
 <script>
     export default {
-        name: "MoreData"
+        name: "MoreData",
+      data(){
+          return{
+            province:'正在定位',
+            city:''
+          }
+      },
+      created(){
+          let obj=sessionStorage.obj;
+          let str=JSON.parse(obj);
+          this.province=str.province;
+          this.city=str.city;
+      }
     }
 </script>
 

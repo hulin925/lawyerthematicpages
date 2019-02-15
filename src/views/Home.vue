@@ -36,6 +36,14 @@
       <router-view/>
     </section>
 
+    <div class="downloadApp" @click.stop="download">
+      <span>都翻到这了，就下载个法务云吧~</span>
+    </div>
+
+    <div class="openApp" @click.stop="download">
+      <span>打开APP查看更多详情</span>
+    </div>
+
   </div>
 </template>
 
@@ -204,6 +212,28 @@
     height:30/@r;
     background-color:#eee;
     border-bottom:1px solid #dbdbdb;
+  }
+
+  .downloadApp{
+    margin:20/@r 0;
+    background-color:#727cff;
+    color:#fff;
+    line-height:80/@r;
+    font-size:32/@r;
+    text-align:center;
+  }
+  .openApp{
+    background-color:#ff3232;
+    color:#fff;
+    width:95%;
+    margin:20/@r auto;
+    line-height:80/@r;
+    font-size:32/@r;
+    text-align:center;
+    -webkit-border-radius: 30/@r;
+    -moz-border-radius: 30/@r;
+    border-radius: 30/@r;
+
   }
 
 </style>

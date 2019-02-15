@@ -64,7 +64,15 @@
 
 <script>
     export default {
-        name: "CaseList"
+      name: "CaseList",
+      data(){
+          return{
+
+          }
+      },
+      created(){
+
+      }
     }
 </script>
 
